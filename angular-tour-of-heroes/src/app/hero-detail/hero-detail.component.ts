@@ -11,7 +11,6 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
- 
   hero: Hero | undefined;
 
   constructor(
@@ -25,7 +24,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
@@ -40,5 +39,4 @@ export class HeroDetailComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
   }
-
 }
